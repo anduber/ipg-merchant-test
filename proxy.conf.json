@@ -1,0 +1,20 @@
+{
+  "/oauth2": {
+    "target": "https://developer.sepa-cyber.com",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/ipg": {
+    "target": "https://gateway.sepa-cyber.com",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/wallet": {
+    "target": "https://gateway.sepa-cyber.com",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

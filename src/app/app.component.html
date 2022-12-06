@@ -1,0 +1,117 @@
+
+
+<div class="grid">
+
+
+  <div class="col-12">
+
+    <p-card header="IPG-Merchant-test"
+      [style]="{width:'100%','padding':'25px'}" styleClass="p-card-shadow">
+      <form [formGroup]="ipgForm">
+        <div class="grid">
+          <div class="col-3">
+            <div class="col-12">
+              <h5 class="input-header-text">Card Number</h5>
+              <p-inputMask mask="9999 9999 9999 9999" class="text-input
+                input-card-number"
+                [style]="{'width':'100%'}" formControlName="cardNumber"></p-inputMask>
+            </div>
+
+
+            <div class="col-12">
+              <h5 class="input-header-text">Expirey Date</h5>
+              <p-calendar formControlName="expireDate" view="month"
+                [style]="{'width':'100%'}"
+
+                dateFormat="mm/yy" [showIcon]="true" inputId="icon"></p-calendar>
+            </div>
+
+            <div class="col-12">
+              <h5 class="input-header-text">CVV</h5>
+              <input type="text" formControlName="cvvNumber" style="width:100%"
+                pInputText />
+            </div>
+
+          </div>
+
+          <!-- /////////////////////////////////////////////////// -->
+          <div class="col-3">
+            <div class="col-12">
+              <h5 class="input-header-text">First Name</h5>
+              <input type="text" formControlName="cardHolderFName" style="width:100%" pInputText />
+            </div>
+
+            <div class="col-12">
+              <h5 class="input-header-text">Currency</h5>
+              <input type="text" formControlName="currency" style="width:100%"
+                pInputText />
+            </div>
+
+          </div>
+
+          <!-- /////////////////////////////////////////////////// -->
+          <div class="col-3">
+            <div class="col-12">
+              <h5 class="input-header-text">Last Name</h5>
+              <input type="text" formControlName="cardHolderLName" style="width:100%" pInputText />
+            </div>
+
+
+
+            <div class="col-12">
+              <h5 class="input-header-text">Amount</h5>
+              <input type="text" formControlName="amount" style="width:100%"
+                pInputText />
+            </div>
+
+          </div>
+
+
+          <div class="col-3">
+
+          </div>
+        </div>
+
+
+      </form>
+
+      <ng-template pTemplate="footer" style="text-align: right">
+        <div class="grid">
+
+          <div class="col-12" style="text-align:right">
+            <p-button [loading]="isLoading" (click)="onCreateOrder();"
+              label="Save"
+              [disabled]="!isFormValid"
+              icon="pi pi-check"></p-button>
+            <p-button (click)="onCancel()" label="Cancel" icon="pi pi-times"
+              styleClass="p-button-secondary"
+              [style]="{'margin-left': '.5em'}"></p-button>
+          </div>
+
+
+
+        </div>
+
+      </ng-template>
+
+
+    </p-card>
+
+  </div>
+
+</div>
+
+
+
+
+<form #form *ngIf="orderResponse" method='post' [action]="orderResponse?.url">
+  <div *ngFor="let x of orderResponse.parameters">
+
+    <input type="hidden" [name]="x.name" [value]="x.value" />
+
+  </div>
+
+</form>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"></p-confirmDialog>
