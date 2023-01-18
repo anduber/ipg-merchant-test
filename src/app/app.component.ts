@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   isLoading!: boolean;
   orderResponse: any;
   ipgForm!: FormGroup;
+  orgId = '094020d0-c527-4775-bb6c-147146938a3e';
+  customerId = '9d7c931f-5215-47ae-a1a8-cfd5d6b175b6';
   @ViewChild('form') form!: ElementRef;
 
 
@@ -37,9 +39,9 @@ export class AppComponent implements OnInit {
   }
 
   private getSavedCards() {
-    const orgId = '094020d0-c527-4775-bb6c-147146938a3e';
-    const customerId = '9d7c931f-5215-47ae-a1a8-cfd5d6b175b6';
-    this._service.getSavedCards(customerId, orgId)
+    // const orgId = '094020d0-c527-4775-bb6c-147146938a3e';
+    // const customerId = '9d7c931f-5215-47ae-a1a8-cfd5d6b175b6';
+    this._service.getSavedCards(this.customerId, this.orgId)
       .subscribe(response => {
         console.log(response)
       })
@@ -54,6 +56,8 @@ export class AppComponent implements OnInit {
       currency: ['EUR', [Validators.required]],
       cardHolderLName: ['Doe', [Validators.required]],
       amount: ['', [Validators.required]],
+      orgId: [this.orgId, [Validators.required]],
+      customerId: [this.customerId, [Validators.required]],
     });
   }
 
